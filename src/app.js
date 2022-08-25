@@ -1,58 +1,54 @@
 // JSX - Javascript XML
 
-var root = document.getElementById("root");
-
-var template = (
-  <div>
-    <h1 id="header">Hello React</h1>
-    <div>Lorem, ipsum dolor.</div>
-    <ul>
-      <li>Lorem, ipsum.</li>
-      <li>Lorem, ipsum.</li>
-      <li>Lorem, ipsum.</li>
-    </ul>
-  </div>
-);
-
-var number = 0;
-var btnOneClassName = "btnRed";
-var btnMinusClassName = "btnRed";
-
-var addOne = () => {
-  number++;
-  renderApp();
-};
-var minusOne = () => {
-  number--;
-  renderApp();
-};
-
-function renderApp() {
-  var template2 = (
-    <div>
-      <h1>Number: {number}</h1>
-      <button id="btnPlusOne" className={btnOneClassName} onClick={addOne}>
-        +1
-      </button>
-      <button id="btnMinusOne" className={btnMinusClassName} onClick={minusOne}>
-        -1
-      </button>
-    </div>
-  );
-
-  ReactDOM.render(template2, root);
+const root = document.getElementById("root");
+const app = {
+  title:"Todo Application",
+  description:"Lorem, ipsum dolor.",
+  items:["item1","item2"]
 }
 
-function tick() {
-  var element = (
-    <div>
-      <h2>time is: {new Date().toLocaleTimeString()}</h2>
-    </div>
-  );
+const onFormSubmit=(event)=>{
+  event.preventDefault();
 
-  ReactDOM.render(element, root);
+  let item = event.target.elements.txtItem.value
+  if(item){
+    app.items.push(item);
+    event.target.elements.txtItem.value="";
+  }
+
+  render();
 }
 
-setInterval(tick, 1000);
+const clearItems=()=>{
+  app.items=[];
+  render();
+}
 
-// renderApp();
+const render=()=>{
+
+
+  let listItems= app.items.map((item,index)=>
+    <li key={index}>{item}</li>
+  )
+
+  let template = (
+    <div>
+      <h1 >{app.title}</h1>
+      <div>{app.description}</div>
+      {<ul>
+          {listItems}
+      </ul>}
+      <p><button onClick={clearItems} >Clear Items</button></p>
+      <p>{app.items.length}</p>
+      <form onSubmit={onFormSubmit}>
+        <input type="text" name="txtItem"/>
+        <button type="submit">Add Item</button>
+
+      </form>
+    </div>
+  );
+  
+  ReactDOM.render(template, root);
+}
+
+render();

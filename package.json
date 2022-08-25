@@ -45,6 +45,7 @@
     "js-tokens": "^4.0.0",
     "jsesc": "^2.5.2",
     "json5": "^2.2.1",
+    "live-server": "^1.2.2",
     "make-dir": "^2.1.0",
     "minimatch": "^3.1.2",
     "ms": "^2.1.2",
@@ -68,7 +69,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "live-server public",
-    "babel": "npx babel src/app.js --out-file=public/scripts/app.js --watch"
+    "babel": "npx babel src/examples/arrow-functions-2.js --out-file=public/scripts/app.js --watch"
   },
   "keywords": [],
   "author": "",
