@@ -1,54 +1,59 @@
-// JSX - Javascript XML
-
-const root = document.getElementById("root");
-const app = {
-  title:"Todo Application",
-  description:"Lorem, ipsum dolor.",
-  items:["item1","item2"]
-}
-
-const onFormSubmit=(event)=>{
-  event.preventDefault();
-
-  let item = event.target.elements.txtItem.value
-  if(item){
-    app.items.push(item);
-    event.target.elements.txtItem.value="";
+class TodoApp extends React.Component {
+  render() {
+    return (
+      <div>
+        <Header />
+        <TodoList />
+        <Action />
+      </div>
+    );
   }
-
-  render();
 }
 
-const clearItems=()=>{
-  app.items=[];
-  render();
+class Header extends React.Component {
+  render() {
+    return (
+      <div>
+        <h1>Todo Application</h1>
+        <div>Lorem, ipsum dolor.</div>
+      </div>
+    );
+  }
 }
 
-const render=()=>{
-
-
-  let listItems= app.items.map((item,index)=>
-    <li key={index}>{item}</li>
-  )
-
-  let template = (
-    <div>
-      <h1 >{app.title}</h1>
-      <div>{app.description}</div>
-      {<ul>
-          {listItems}
-      </ul>}
-      <p><button onClick={clearItems} >Clear Items</button></p>
-      <p>{app.items.length}</p>
-      <form onSubmit={onFormSubmit}>
-        <input type="text" name="txtItem"/>
-        <button type="submit">Add Item</button>
-
-      </form>
-    </div>
-  );
-  
-  ReactDOM.render(template, root);
+class TodoList extends React.Component {
+  render() {
+    return (
+      <ul>
+        <TodoItem />
+        <TodoItem />
+        <TodoItem />
+      </ul>
+    );
+  }
 }
 
-render();
+class TodoItem extends React.Component {
+  render() {
+    return <li>Todo item</li>;
+  }
+}
+
+class Action extends React.Component {
+  render() {
+    return (
+      <div>
+        <p>
+          <button>Clear Items</button>
+        </p>
+        <p>1</p>
+        <form>
+          <input type="text" name="txtItem" />
+          <button type="submit">Add Item</button>
+        </form>
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(<TodoApp />, document.getElementById("root"));

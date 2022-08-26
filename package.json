@@ -69,7 +69,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "live-server public",
-    "babel": "npx babel src/examples/arrow-functions-2.js --out-file=public/scripts/app.js --watch"
+    "babel": "npx babel src/app.js --out-file=public/scripts/app.js --watch"
   },
   "keywords": [],
   "author": "",
