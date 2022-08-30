@@ -1,9 +1,17 @@
 {
   "devDependencies": {
-    "@babel/cli": "^7.18.10",
-    "@babel/core": "^7.18.13",
-    "@babel/preset-env": "^7.18.10",
-    "@babel/preset-react": "^7.18.6"
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.10.5",
+    "@babel/preset-env": "^7.10.4",
+    "@babel/preset-react": "^7.10.4",
+    "babel-loader": "^8.2.5",
+    "css-loader": "^4.2.1",
+    "node-sass": "^4.14.1",
+    "sass-loader": "^9.0.3",
+    "style-loader": "^1.2.1",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
   },
   "name": "hello-react",
   "version": "1.0.0",
@@ -13,6 +21,7 @@
     "anymatch": "^3.1.2",
     "balanced-match": "^1.0.2",
     "binary-extensions": "^2.2.0",
+    "bootstrap": "^4.5.2",
     "brace-expansion": "^1.1.11",
     "braces": "^3.0.2",
     "browserslist": "^4.21.3",
@@ -56,6 +65,8 @@
     "picocolors": "^1.0.0",
     "picomatch": "^2.3.1",
     "pify": "^4.0.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "readdirp": "^3.6.0",
     "safe-buffer": "^5.1.2",
     "semver": "^6.3.0",
@@ -67,9 +78,8 @@
     "wrappy": "^1.0.2"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "live-server public",
-    "babel": "npx babel src/app.js --out-file=public/scripts/app.js --watch"
+    "webpack-build": "webpack --mode production",
+    "start": "webpack-dev-server --open"
   },
   "keywords": [],
   "author": "",

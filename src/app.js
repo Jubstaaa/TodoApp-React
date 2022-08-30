@@ -1,59 +1,9 @@
-class TodoApp extends React.Component {
-  render() {
-    return (
-      <div>
-        <Header />
-        <TodoList />
-        <Action />
-      </div>
-    );
-  }
-}
+import React from "react";
+import ReactDOM from "react-dom";
+import TodoApp from "./components/TodoApp";
+import "./styles/main.scss";
 
-class Header extends React.Component {
-  render() {
-    return (
-      <div>
-        <h1>Todo Application</h1>
-        <div>Lorem, ipsum dolor.</div>
-      </div>
-    );
-  }
-}
-
-class TodoList extends React.Component {
-  render() {
-    return (
-      <ul>
-        <TodoItem />
-        <TodoItem />
-        <TodoItem />
-      </ul>
-    );
-  }
-}
-
-class TodoItem extends React.Component {
-  render() {
-    return <li>Todo item</li>;
-  }
-}
-
-class Action extends React.Component {
-  render() {
-    return (
-      <div>
-        <p>
-          <button>Clear Items</button>
-        </p>
-        <p>1</p>
-        <form>
-          <input type="text" name="txtItem" />
-          <button type="submit">Add Item</button>
-        </form>
-      </div>
-    );
-  }
-}
+// React Hook
+// Stateless Function Component + Hook => Class Component (state)
 
 ReactDOM.render(<TodoApp />, document.getElementById("root"));
